@@ -1,0 +1,3 @@
+C:/Users/drozh/proga/RGR2/build/CMakeFiles/RGR2.dir
+C:/Users/drozh/proga/RGR2/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/drozh/proga/RGR2/build/CMakeFiles/ZERO_CHECK.dir

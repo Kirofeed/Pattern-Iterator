@@ -1,15 +1,35 @@
 #include <iostream>
 #include <vector>
 #include "KSet.h"
+#include "iter.h"
 using namespace std;
 
-int main(){
-    vector<int> vec1 {1, 10, 2, 1, 4, 3};
-    KSet k1(vec1);
-    cout << k1 << endl;
-    cout << k1.size() << endl;
-    k1.clear();
-    cout << k1 << endl;
-    return 0;
+int count(KSet &kset, int value) {
+    Iter *iter = kset.CreateIter();
+    int* last = iter->last();
+    iter->first();
+    while (iter->CurrentItem() != last)
+    {
+        if (*iter->CurrentItem() == value) {
+            return 1;
+        }
+        iter->next();
+    }
+    if (*iter->last() != value)
+    {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+    
+    
+    
+}
 
+int main(){
+    KSet k1;
+    cout << count(k1, 0) << endl;
+    return 0;
+    
 }

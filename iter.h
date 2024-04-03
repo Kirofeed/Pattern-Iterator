@@ -1,9 +1,14 @@
 #include "KSet.h"
 
-class Iter {
-public:
-    Iter(const KSet);
-private:
-    int id;
 
+class Iter {
+    int index;
+    int* value = 0;
+    const KSet* kset;
+public:
+    Iter(const KSet* kset);
+    int* first();
+    int* last();
+    int* next();
+    int* CurrentItem();
 };

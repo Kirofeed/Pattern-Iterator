@@ -1,14 +1,22 @@
+#ifndef KSET_H
+#define KSET_H
+
 #include <vector>
+#include <fstream>
 using namespace std;
+
 
 
 class KSet {
     friend ostream& operator<<(ostream& os, const KSet& kset);
+    friend class Iter;
 private:
-    vector<int> vec;
+    int *arr = new int[10];
+    int sz;
 public:
-    explicit KSet(const vector<int>& a);
-    KSet() = default;
+    KSet();
+    void push(int a);
+    Iter* CreateIter() const;
     KSet& operator=(const KSet& other);
     KSet& operator|(const KSet& other);
     KSet& operator|=(const KSet& other);
@@ -16,8 +24,11 @@ public:
     KSet& operator&=(const KSet& other);
     KSet& operator/(const KSet& other);
     KSet& operator/=(const KSet& other);
-    int size();
+    int size() const;
     void clear();
     bool IsEmpty();
-    void display();
+    bool IsFull();
+    void processKSet();
 };
+
+#endif // KSET_H

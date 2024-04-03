@@ -1,27 +1,30 @@
 #include "iter.h"
 
-Iter::Iter() {
-    value_ = 0;
-}
-Iter::Iter(const Iter& other) {
-    value_ = other.value_;
-}
-Iter& Iter::operator=(const Iter& other) = default;
-void Iter::next() {
-    value_++;
-}
 
-[[maybe_unused]] bool Iter::equals(const Iter& other) const {
-    return value_ == other.value_;
+Iter::Iter(const KSet* kset) {
+    this->kset = kset;
+    int index = 0;
 }
-int Iter::value() const {
-    return value_;
+int* Iter::first() {
+    this->value = &kset->arr[0];
+    index = 0;
+    return this->value;
 }
-void Iter::setValue(int value) {
-    value_ = value;
+int* Iter::last() {
+    if (this->kset->sz == -1) {
+        return first();
+    }
+    this->value = &this->kset->arr[this->kset->sz];
+    return this->value;
 }
-
-Iter::~Iter() = default;
+int* Iter::next() {
+    this->index++;
+    this->value = &this->kset->arr[this->index];
+    return this->value;
+}
+int* Iter::CurrentItem() {
+    return this->value;
+}
 
 
 
